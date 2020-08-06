@@ -10,6 +10,10 @@ add_library(
 
 target_compile_definitions(GLEW PUBLIC GLEW_BUILD)
 target_include_directories(GLEW PRIVATE include)
+set_target_properties(
+    GLEW PROPERTIES
+    DEBUG_POSTFIX ""
+)
 
 add_library(
     GLEWs
@@ -17,7 +21,11 @@ add_library(
     src/glew.c
 )
 
-set_target_properties(GLEWs PROPERTIES OUTPUT_NAME "GLEW")
+set_target_properties(
+    GLEWs PROPERTIES
+    OUTPUT_NAME "GLEW"
+    DEBUG_POSTFIX ""
+)
 target_compile_definitions(GLEWs PUBLIC GLEW_STATIC)
 target_include_directories(GLEWs PRIVATE include)
 target_link_libraries(GLEW "OpenGL32.lib")
